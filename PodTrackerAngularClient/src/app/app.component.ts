@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PodTrackerAngularClient';
+  title = 'PodTracker';
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.HandsetPortrait)
+    .pipe(map(result => result.matches));
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
 }
