@@ -1,0 +1,82 @@
+.content-container {
+  bottom: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 250px 50px 1fr;
+  grid-template-rows: 250px 1fr;
+  grid-template-areas:
+    'image options info'
+    'episodes episodes episodes';
+  gap: 20px;
+  column-gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container {
+  grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-container {
+  margin-left: 10px;
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container p {
+  overflow: auto;
+  margin: 0;
+}
+
+.episodes-container {
+  grid-area: episodes;
+}
+
+.podcast-image {
+  object-fit: scale-down;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .grid-container {
+    grid-template-rows: 250px 50px auto 500px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'image '
+      'options '
+      'info '
+      'episodes ';
+  }
+}
+
+.podcast-episode {
+  height: 80px;
+}
+
+.options-container {
+  text-align: center;
+}
+
+.episodes-viewport {
+  height: 100%;
+}
+
+.cdk-virtual-scroll-content-wrapper {
+  position: initial;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

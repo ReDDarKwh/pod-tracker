@@ -14,8 +14,52 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  padding: 0 20px;
 }
 
 .fill-remaining-space {
   flex: 1 1 auto;
+}
+
+.user-btn {
+  /* position: absolute;
+  right: 20px;
+  top: 20px; */
+  font-size: medium;
+}
+
+.main-header {
+  background: transparent;
+  flex: 0 0 auto;
+}
+
+.main-footer {
+  flex: 0 0 auto;
+  min-height: 0;
+}
+
+.mat-subheader {
+  font-weight: lighter;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.mat-sidenav-content {
+  overflow: hidden;
+}
+
+.content-wrapper {
+  overflow-y: auto;
+  position: relative;
+}
+
+app-audio-player {
+  width: 100%;
+}
+app-current-podcast-info {
+  position: absolute;
+  bottom: 0;
+}
+.toggle-btn {
+  margin-left: -7px;
 }

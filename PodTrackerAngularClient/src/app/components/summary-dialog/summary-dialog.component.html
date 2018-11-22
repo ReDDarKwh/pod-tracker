@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>
+  Summary of <i>{{ data.title }}</i>
+</h2>
+<mat-dialog-content class="mat-typography">
+  {{ data.summary }}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</mat-dialog-actions>

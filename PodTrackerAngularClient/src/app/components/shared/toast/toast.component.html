@@ -1,0 +1,19 @@
+<div *ngIf="data.type == 'error'">
+  <fa-icon [icon]="['fas', 'exclamation']"></fa-icon>&nbsp;
+
+  <span
+    >Erreur<span *ngIf="data.message"> : {{ data.message }}</span></span
+  >
+</div>
+
+<div *ngIf="data.type == 'success'">
+  <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>&nbsp;<span
+    >Opération réussite.</span
+  >
+</div>
+
+<div *ngIf="data.type == 'loading'">
+  <fa-icon [icon]="['fas', 'spinner']" [pulse]="true"></fa-icon>&nbsp;<span
+    >Chargement...</span
+  >
+</div>

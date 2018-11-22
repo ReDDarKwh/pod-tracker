@@ -1,5 +1,4 @@
 <div class="content-container">
-  <h1>Recently played</h1>
   <mat-grid-list cols="2" rowHeight="150px">
     <mat-grid-tile
       *ngFor="let result of podcasts"
@@ -17,12 +16,6 @@
             />
           </div>
           <mat-card-title>{{ result.title }}</mat-card-title>
-          <mat-card-subtitle
-            >Played :
-            {{
-              result.lastListened | date: 'MMM d, y, h:mm:ss a':'-5'
-            }}</mat-card-subtitle
-          >
         </mat-card-header>
       </mat-card>
     </mat-grid-tile>

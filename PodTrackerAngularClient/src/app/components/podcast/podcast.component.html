@@ -1,0 +1,42 @@
+<div class="content-container">
+  <div *ngIf="podcast; else: loading" class="grid-container">
+    <div class="image-container">
+      <img class="podcast-image " [src]="podcast.imageUrl" />
+    </div>
+
+    <div class="options-container">
+      <button
+        (click)="toggleFollowPodcast()"
+        [color]="this.podcast.followed ? 'accent' : 'basic'"
+        mat-mini-fab
+      >
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+
+    <div class="info-container">
+      <h2>Description</h2>
+      <p>{{ podcast.description }}</p>
+    </div>
+
+    <div class="episodes-container">
+      <cdk-virtual-scroll-viewport itemSize="170" class="episodes-viewport">
+        <app-podcast-episode
+          *cdkVirtualFor="
+            let item of podcast.podcastEpisode;
+            templateCacheSize: 10
+          "
+          class="podcast-episode"
+          [episode]="item"
+          [podcast]="podcast"
+        ></app-podcast-episode>
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-container">
+      <mat-spinner color="accent"></mat-spinner>
+    </div>
+  </ng-template>
+</div>
