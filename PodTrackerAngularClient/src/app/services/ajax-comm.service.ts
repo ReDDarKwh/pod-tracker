@@ -25,9 +25,7 @@ export class RequestActionParams extends RequestParams {
 
 @Injectable({ providedIn: 'root' })
 export class AjaxCommService {
-  static DEFAULT_SERVICE_URL: string = !environment.production
-    ? 'https://localhost:44361/'
-    : 'https://intranet.ebsu.ca/inventoryServices/';
+  static DEFAULT_SERVICE_URL = 'https://pod-tracker.herokuapp.com/';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
