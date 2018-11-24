@@ -10,7 +10,7 @@ pages:
     - npm install -g @angular/cli@7.0.6
     - npm install
     - ng build
-    - mv dist/fossilizer/* public/
+    - mv dist/PodTrackerAngularClient/* public/
   artifacts:
     paths:
       - public
