@@ -4,6 +4,8 @@ import { AjaxCommService } from 'src/app/services/ajax-comm.service';
 import { Podcast } from 'src/app/models/podcast';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-followed-podcasts',
@@ -14,6 +16,10 @@ export class FollowedPodcastsComponent implements OnInit {
   podcasts: Podcast[];
   colspan = 2;
   rowspan = 1;
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe([Breakpoints.Small, Breakpoints.XSmall])
+    .pipe(map(result => result.matches));
 
   constructor(
     private headerService: HeaderService,
@@ -29,11 +35,11 @@ export class FollowedPodcastsComponent implements OnInit {
         this.podcasts = data;
       });
 
-    this.breakpointObserver
-      .observe(Breakpoints.Small)
-      .subscribe(({ matches }) => {
-        this.colspan = matches ? 2 : 1;
-      });
+    // this.breakpointObserver
+    //   .observe(Breakpoints.Small)
+    //   .subscribe(({ matches }) => {
+    //     this.colspan = matches ? 2 : 1;
+    //   });
   }
 
   ngOnInit() {}
