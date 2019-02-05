@@ -93,7 +93,7 @@ export class RssParserService {
   }
 
   private extractFeeds(res: string, url: string) {
-    const rss = JSON.parse(res).rss.channel;
+    const rss = JSON.parse(res.replace(/(\/\*[\S\s]*?\*\/)/gm, '')).rss.channel;
 
     const podcast = {
       title: rss.title,
