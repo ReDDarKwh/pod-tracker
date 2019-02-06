@@ -39,7 +39,8 @@ import {
   faSpinner,
   faUser,
   faPlay,
-  faPause
+  faPause,
+  faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import {
   HTTP_INTERCEPTORS,
@@ -60,7 +61,15 @@ import { PodcastEpisodeComponent } from './components/podcast-episode/podcast-ep
 import { SummaryDialogComponent } from './components/summary-dialog/summary-dialog.component';
 import { CurrentPodcastInfoComponent } from './components/current-podcast-info/current-podcast-info.component';
 
-library.add(faPause, faExclamation, faCheckCircle, faSpinner, faUser, faPlay);
+library.add(
+  faPause,
+  faExclamation,
+  faCheckCircle,
+  faSpinner,
+  faUser,
+  faPlay,
+  faDownload
+);
 
 @NgModule({
   declarations: [
