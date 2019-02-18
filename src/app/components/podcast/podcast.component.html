@@ -1,5 +1,5 @@
 <div class="content-container">
-  <div *ngIf="podcast; else: loading" class="grid-container">
+  <div *ngIf="podcast; else loading" class="grid-container">
     <div class="image-container">
       <img class="podcast-image " [src]="podcast.imageUrl" />
     </div>
@@ -20,10 +20,25 @@
     </div>
 
     <div class="episodes-container">
+      <div class="episode-container-header">
+        <label class="mr-2"
+          ><span *ngIf="orderByDesc.value; else oldToNew">new to old</span> :
+          <ng-template #oldToNew>old to new</ng-template></label
+        >
+        <button mat-mini-fab color="primary" (click)="changePodcastOrder()">
+          <fa-icon
+            class="order-icon"
+            size="2x"
+            [rotate]="orderByDesc.value ? 0 : 180"
+            [icon]="['fas', 'caret-down']"
+          ></fa-icon>
+        </button>
+      </div>
+
       <cdk-virtual-scroll-viewport itemSize="170" class="episodes-viewport">
         <app-podcast-episode
           *cdkVirtualFor="
-            let item of podcast.podcastEpisode;
+            let item of (podcastEpisodes | async);
             templateCacheSize: 10
           "
           class="podcast-episode"

@@ -40,7 +40,8 @@ import {
   faUser,
   faPlay,
   faPause,
-  faDownload
+  faDownload,
+  faCaretDown
 } from '@fortawesome/free-solid-svg-icons';
 import {
   HTTP_INTERCEPTORS,
@@ -68,7 +69,8 @@ library.add(
   faSpinner,
   faUser,
   faPlay,
-  faDownload
+  faDownload,
+  faCaretDown
 );
 
 @NgModule({

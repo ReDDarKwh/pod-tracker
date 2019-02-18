@@ -37,7 +37,7 @@ export class PodcastEpisodeComponent implements OnInit {
       ? (this.episode.timeStep / this.episode.duration) * 100
       : 0;
   }
-  ng;
+
   download() {
     const link = document.createElement('a');
     link.download = name;
