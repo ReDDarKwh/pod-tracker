@@ -34,14 +34,16 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    this.auth
-      .login(
-        this.getField('fieldUsername').value,
-        this.getField('fieldPassword').value
-      )
-      .subscribe(() => {
-        this.router.navigate(['/dashboard']);
-      });
+    if (!this.formGroup.invalid) {
+      this.auth
+        .login(
+          this.getField('fieldUsername').value,
+          this.getField('fieldPassword').value
+        )
+        .subscribe(() => {
+          this.router.navigate(['/dashboard']);
+        });
+    }
   }
 
   ngOnInit() {}

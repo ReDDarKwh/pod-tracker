@@ -42,14 +42,16 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    this.auth
-      .register(
-        this.getField('fieldUsername').value,
-        this.getField('fieldPassword').value
-      )
-      .subscribe(() => {
-        this.router.navigate(['/login']);
-      });
+    if (!this.formGroup.invalid) {
+      this.auth
+        .register(
+          this.getField('fieldUsername').value,
+          this.getField('fieldPassword').value
+        )
+        .subscribe(() => {
+          this.router.navigate(['/login']);
+        });
+    }
   }
 
   ngOnInit() {}

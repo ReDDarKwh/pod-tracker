@@ -6,7 +6,7 @@
   <mat-grid-list cols="2" rowHeight="150px">
     <mat-grid-tile
       *ngFor="let result of results"
-      [colspan]="colspan"
+      [colspan]="(isHandset$ | async) ? 2 : 1"
       [rowspan]="rowspan"
     >
       <mat-card class="mat-elevation-z4" (click)="onClickPodcast(result)">

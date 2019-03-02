@@ -5,12 +5,12 @@ import {
 } from 'src/app/models/ituneSeachResult';
 import { ItuneSearchService } from 'src/app/services/itune-search.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime, switchMap, catchError } from 'rxjs/operators';
+import { debounceTime, switchMap, catchError, map } from 'rxjs/operators';
 
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { HeaderService } from 'src/app/services/header.service';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-browse',
@@ -23,6 +23,10 @@ export class BrowseComponent implements OnInit {
   colspan = 2;
   rowspan = 1;
 
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe([Breakpoints.Small, Breakpoints.XSmall])
+    .pipe(map(result => result.matches));
+
   constructor(
     private itunesSearch: ItuneSearchService,
     private breakpointObserver: BreakpointObserver,
@@ -32,12 +36,6 @@ export class BrowseComponent implements OnInit {
     this.headerService.titleSubject.next('Browse');
 
     this.fieldSearch = new FormControl();
-
-    this.breakpointObserver
-      .observe(Breakpoints.Small)
-      .subscribe(({ matches }) => {
-        this.colspan = matches ? 2 : 1;
-      });
 
     this.fieldSearch.valueChanges
       .pipe(
