@@ -16,7 +16,7 @@ $candy-app-accent: mat-palette($mat-cyan, A200, A100, A400);
 $candy-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$candy-app-theme: mat-dark-theme(
+$candy-app-theme: mat-light-theme(
   $candy-app-primary,
   $candy-app-accent,
   $candy-app-warn
