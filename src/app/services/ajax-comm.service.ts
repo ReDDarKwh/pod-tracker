@@ -29,35 +29,6 @@ export class AjaxCommService {
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  public requestPipe = function(notify = true) {
-    if (notify) {
-      this.snackBar.openFromComponent(ToastComponent, {
-        duration: false,
-        data: { type: 'loading' }
-      });
-    }
-
-    return pipe(
-      map((res: any) => {
-        if (notify) {
-          this.snackBar.openFromComponent(ToastComponent, {
-            duration: 3000,
-            data: { type: 'success' }
-          });
-        }
-        return res;
-      }),
-      catchError(err => {
-        this.snackBar.openFromComponent(ToastComponent, {
-          duration: 5000,
-          data: { type: 'error', message: err.error.message }
-        });
-
-        return throwError(err);
-      })
-    );
-  };
-
   get({
     control,
     params,
@@ -88,13 +59,11 @@ export class AjaxCommService {
     notify = true,
     urlPrefix = AjaxCommService.DEFAULT_SERVICE_URL
   }: RequestParams): Observable<any> {
-    return this.http
-      .post(
-        `${urlPrefix}api/${control}`,
-        data,
-        params ? { params: params } : undefined
-      )
-      .pipe(this.requestPipe(notify));
+    return this.http.post(
+      `${urlPrefix}api/${control}`,
+      data,
+      params ? { params: params } : undefined
+    );
   }
 
   postAction({
@@ -105,13 +74,11 @@ export class AjaxCommService {
     notify = true,
     urlPrefix = AjaxCommService.DEFAULT_SERVICE_URL
   }: RequestActionParams): Observable<any> {
-    return this.http
-      .post(
-        `${urlPrefix}api/${control}/${action}`,
-        data,
-        params ? { params: params } : undefined
-      )
-      .pipe(this.requestPipe(notify));
+    return this.http.post(
+      `${urlPrefix}api/${control}/${action}`,
+      data,
+      params ? { params: params } : undefined
+    );
   }
 
   put({
@@ -121,13 +88,11 @@ export class AjaxCommService {
     notify = true,
     urlPrefix = AjaxCommService.DEFAULT_SERVICE_URL
   }: RequestParams): Observable<any> {
-    return this.http
-      .put(
-        `${urlPrefix}api/${control}`,
-        data,
-        params ? { params: params } : undefined
-      )
-      .pipe(this.requestPipe(notify));
+    return this.http.put(
+      `${urlPrefix}api/${control}`,
+      data,
+      params ? { params: params } : undefined
+    );
   }
 
   putAction({
@@ -138,13 +103,11 @@ export class AjaxCommService {
     notify = true,
     urlPrefix = AjaxCommService.DEFAULT_SERVICE_URL
   }: RequestActionParams): Observable<any> {
-    return this.http
-      .put(
-        `${urlPrefix}api/${control}/${action}`,
-        data,
-        params ? { params: params } : undefined
-      )
-      .pipe(this.requestPipe(notify));
+    return this.http.put(
+      `${urlPrefix}api/${control}/${action}`,
+      data,
+      params ? { params: params } : undefined
+    );
   }
 
   delete({
@@ -153,11 +116,9 @@ export class AjaxCommService {
     urlPrefix = AjaxCommService.DEFAULT_SERVICE_URL,
     notify = true
   }): Observable<any> {
-    return this.http
-      .delete(
-        `${urlPrefix}api/${control}`,
-        params ? { params: params } : undefined
-      )
-      .pipe(this.requestPipe(notify));
+    return this.http.delete(
+      `${urlPrefix}api/${control}`,
+      params ? { params: params } : undefined
+    );
   }
 }
