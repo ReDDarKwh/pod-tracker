@@ -29,7 +29,41 @@
     <app-current-podcast-info></app-current-podcast-info>
   </mat-sidenav> -->
   <mat-sidenav-content class="d-flex flex-column">
-    
+    <mat-toolbar class="main-header">
+      <button
+        class="toggle-btn"
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset$ | async)"
+        style="opacity:0"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <h1>{{ title }}</h1>
+      <span class="fill-remaining-space"></span>
+
+      <div style="opacity:0" *ngIf="auth.currentUserValue; else loggedOut">
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item>Settings</button>
+          <button (click)="logout()" mat-menu-item>Logout</button>
+        </mat-menu>
+
+        <button
+          class="user-btn"
+          mat-raised-button
+          [matMenuTriggerFor]="userMenu"
+        >
+          <fa-icon [fixedWidth]="true" icon="user"></fa-icon>
+        </button>
+      </div>
+
+      <ng-template #loggedOut>
+        <a routerLink="/login" class="mr-1" mat-button>Login</a>
+        <a routerLink="/register" mat-stroked-button>Register</a>
+      </ng-template>
+    </mat-toolbar>
 
     <div class="fill-remaining-space content-wrapper">
       <router-outlet></router-outlet>
