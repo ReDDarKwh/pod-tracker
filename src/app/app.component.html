@@ -43,7 +43,7 @@
       <h1>{{ title }}</h1>
       <span class="fill-remaining-space"></span>
 
-      <div style="opacity:0" *ngIf="auth.currentUserValue; else loggedOut">
+      <div *ngIf="auth.currentUserValue; else: loggedOut">
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>Settings</button>
           <button (click)="logout()" mat-menu-item>Logout</button>
@@ -68,9 +68,9 @@
       <router-outlet></router-outlet>
     </div>
 
-    <!-- <mat-toolbar class="main-footer" color="primary">
+    <mat-toolbar class="main-footer" color="primary">
       <app-audio-player></app-audio-player>
-    </mat-toolbar>  -->
+    </mat-toolbar>
 
     <!-- Add Content Here -->
   </mat-sidenav-content>
