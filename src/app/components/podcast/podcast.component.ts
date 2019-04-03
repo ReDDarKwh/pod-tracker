@@ -48,7 +48,7 @@ export class PodcastComponent implements OnInit {
         const observable = this.rssParser.getFeedContent(params.rss);
 
         observable.subscribe((data: Podcast) => {
-          headerService.titleSubject.next('');
+          headerService.titleSubject.next(data.title);
           this.podcast = data;
         });
       }
