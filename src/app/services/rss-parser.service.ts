@@ -97,17 +97,14 @@ export class RssParserService {
 
     const podcast = {
       title: rss.title,
-      description: JSON.stringify(rss['itunes:summary'] || rss.description),
+      description: rss['itunes:summary'] || rss.description,
       imageUrl: rss['itunes:image']['@href'],
       rss: url,
 
       podcastEpisode: rss.item.map(
         x =>
           ({
-            description:
-              typeof x.description === 'object'
-                ? x.description['#cdata-section']
-                : x.description,
+            description: x.description,
             audioUrl: x.enclosure && x.enclosure['@url'],
             audioType: x.enclosure && x.enclosure['@type'],
             imageUrl: x['itunes:image'] && x['itunes:image']['@href'],
