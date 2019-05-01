@@ -6,6 +6,7 @@ import { AuthGuard } from './guards/auth-guard';
 import { FollowedPodcastsComponent } from './components/followed-podcasts/followed-podcasts.component';
 import { BrowseComponent } from './components/browse/browse.component';
 import { PodcastComponent } from './components/podcast/podcast.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 export const routerConfig: Routes = [
   {
@@ -19,6 +20,12 @@ export const routerConfig: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'recommendation',
+    component: RecommendationComponent,
     canActivate: [AuthGuard]
   },
 

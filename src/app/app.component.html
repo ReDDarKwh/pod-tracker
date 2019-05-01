@@ -21,6 +21,11 @@
       <a mat-list-item routerLink="/dashboard" (click)="toggleMenu()"
         >Dashboard</a
       >
+
+      <a mat-list-item routerLink="/recommendation" (click)="toggleMenu()"
+        >Recommendations</a
+      >
+
       <a mat-list-item routerLink="/followed" (click)="toggleMenu()"
         >Followed</a
       >
@@ -36,14 +41,14 @@
         aria-label="Toggle sidenav"
         mat-icon-button
         (click)="drawer.toggle()"
-        *ngIf="(isHandset$ | async)"
+        *ngIf="isHandset$ | async"
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <h1>{{ title }}</h1>
       <span class="fill-remaining-space"></span>
 
-      <div *ngIf="auth.currentUserValue; else: loggedOut">
+      <div *ngIf="auth.currentUserValue; else loggedOut">
         <mat-menu #userMenu="matMenu">
           <button mat-menu-item>Settings</button>
           <button (click)="logout()" mat-menu-item>Logout</button>

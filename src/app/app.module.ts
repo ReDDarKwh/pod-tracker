@@ -61,6 +61,7 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
 import { PodcastEpisodeComponent } from './components/podcast-episode/podcast-episode.component';
 import { SummaryDialogComponent } from './components/summary-dialog/summary-dialog.component';
 import { CurrentPodcastInfoComponent } from './components/current-podcast-info/current-podcast-info.component';
+import { RecommendationComponent } from './components/recommendation/recommendation.component';
 
 library.add(
   faPause,
@@ -88,7 +89,8 @@ library.add(
     AudioPlayerComponent,
     PodcastEpisodeComponent,
     SummaryDialogComponent,
-    CurrentPodcastInfoComponent
+    CurrentPodcastInfoComponent,
+    RecommendationComponent
   ],
   imports: [
     ScrollDispatchModule,

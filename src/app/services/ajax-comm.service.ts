@@ -25,7 +25,9 @@ export class RequestActionParams extends RequestParams {
 
 @Injectable({ providedIn: 'root' })
 export class AjaxCommService {
-  static DEFAULT_SERVICE_URL = 'https://pod-tracker.herokuapp.com/';
+  static DEFAULT_SERVICE_URL =
+    'http://localhost:8080/podtracker-services-java/';
+  //static DEFAULT_SERVICE_URL = 'https://pod-tracker.herokuapp.com/';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -64,7 +66,7 @@ export class AjaxCommService {
     urlPrefix = AjaxCommService.DEFAULT_SERVICE_URL
   }: RequestParams): Observable<any> {
     return this.http.get(
-      `${urlPrefix}api/${control}`,
+      `${urlPrefix}webresources/${control}`,
       params ? { params: params } : undefined
     );
   }
@@ -76,7 +78,7 @@ export class AjaxCommService {
     urlPrefix = AjaxCommService.DEFAULT_SERVICE_URL
   }: RequestActionParams): Observable<any> {
     return this.http.get(
-      `${urlPrefix}api/${control}/${action}`,
+      `${urlPrefix}webresources/${control}/${action}`,
       params ? { params: params } : undefined
     );
   }
@@ -90,7 +92,7 @@ export class AjaxCommService {
   }: RequestParams): Observable<any> {
     return this.http
       .post(
-        `${urlPrefix}api/${control}`,
+        `${urlPrefix}webresources/${control}`,
         data,
         params ? { params: params } : undefined
       )
@@ -107,7 +109,7 @@ export class AjaxCommService {
   }: RequestActionParams): Observable<any> {
     return this.http
       .post(
-        `${urlPrefix}api/${control}/${action}`,
+        `${urlPrefix}webresources/${control}/${action}`,
         data,
         params ? { params: params } : undefined
       )
@@ -123,7 +125,7 @@ export class AjaxCommService {
   }: RequestParams): Observable<any> {
     return this.http
       .put(
-        `${urlPrefix}api/${control}`,
+        `${urlPrefix}webresources/${control}`,
         data,
         params ? { params: params } : undefined
       )
@@ -140,7 +142,7 @@ export class AjaxCommService {
   }: RequestActionParams): Observable<any> {
     return this.http
       .put(
-        `${urlPrefix}api/${control}/${action}`,
+        `${urlPrefix}webresources/${control}/${action}`,
         data,
         params ? { params: params } : undefined
       )
@@ -155,7 +157,7 @@ export class AjaxCommService {
   }): Observable<any> {
     return this.http
       .delete(
-        `${urlPrefix}api/${control}`,
+        `${urlPrefix}webresources/${control}`,
         params ? { params: params } : undefined
       )
       .pipe(this.requestPipe(notify));
