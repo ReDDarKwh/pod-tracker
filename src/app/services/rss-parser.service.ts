@@ -19,11 +19,17 @@ export class RssParserService {
 
   getFeedContent(url: string): Observable<any> {
     return forkJoin([
-      this.ajaxComm.get({ control: 'XmlParser', params: { url } }).pipe(
-        map(data => {
-          return this.extractFeeds(data, url);
+      this.ajaxComm
+        .get({
+          control: 'XmlParser',
+          params: { url },
+          urlPrefix: AjaxCommService.NET_SERVICE_URL
         })
-      ),
+        .pipe(
+          map(data => {
+            return this.extractFeeds(data, url);
+          })
+        ),
       this.ajaxComm
         .get({ control: 'followedPodcasts', params: { rss: url } })
         .pipe(
@@ -76,7 +82,7 @@ export class RssParserService {
 
               return this.ajaxComm
                 .post({
-                  control: 'FollowedPodcasts',
+                  control: 'followedPodcasts',
                   data: requestPod
                 })
                 .pipe(

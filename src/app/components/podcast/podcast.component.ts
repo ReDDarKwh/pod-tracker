@@ -79,7 +79,7 @@ export class PodcastComponent implements OnInit {
 
     this.ajaxComm
       .put({
-        control: 'FollowedPodcasts',
+        control: 'followedPodcasts',
         params: { rss: requestPod.rss },
         data: requestPod
       })
