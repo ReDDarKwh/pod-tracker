@@ -80,20 +80,25 @@ export class RssParserService {
                 category: genreId
               }))(res[0]);
 
-              requestPod.userId = this.authService.currentUserValue.id;
-              console.log(requestPod.userId);
+              requestPod.userId =
+                this.authService.currentUserValue &&
+                this.authService.currentUserValue.id;
 
-              return this.ajaxComm
-                .post({
-                  control: 'followedPodcasts',
-                  data: requestPod
-                })
-                .pipe(
-                  map(x => {
-                    res[0].id = x.id;
-                    return res[0];
+              if (this.authService.currentUserValue) {
+                return this.ajaxComm
+                  .post({
+                    control: 'followedPodcasts',
+                    data: requestPod
                   })
-                );
+                  .pipe(
+                    map(x => {
+                      res[0].id = x.id;
+                      return res[0];
+                    })
+                  );
+              } else {
+                return of(res[0]);
+              }
             })
           );
         }

@@ -25,7 +25,7 @@ export class PodcastComponent implements OnInit {
     private route: ActivatedRoute,
     private rssParser: RssParserService,
     private headerService: HeaderService,
-    private authService: AuthenticationService,
+    public authService: AuthenticationService,
     private ajaxComm: AjaxCommService
   ) {
     this.orderByDesc = new BehaviorSubject<boolean>(true);

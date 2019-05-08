@@ -9,6 +9,7 @@
         (click)="toggleFollowPodcast()"
         [color]="this.podcast.followed ? 'accent' : 'basic'"
         mat-mini-fab
+        *ngIf="authService.currentUserValue != null"
       >
         <mat-icon>favorite</mat-icon>
       </button>
@@ -38,7 +39,7 @@
       <cdk-virtual-scroll-viewport itemSize="170" class="episodes-viewport">
         <app-podcast-episode
           *cdkVirtualFor="
-            let item of (podcastEpisodes | async);
+            let item of podcastEpisodes | async;
             templateCacheSize: 10
           "
           class="podcast-episode"

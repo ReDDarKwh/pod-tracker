@@ -242,7 +242,7 @@ export class AudioPlayerComponent implements OnInit {
 
         this.currentPodcast = x.episode;
 
-        if (!x.episode.id) {
+        if (!x.episode.id && this.authService.currentUserValue) {
           this.ajaxComm
             .post({
               control: 'PodcastEpisodes',
