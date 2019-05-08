@@ -45,10 +45,14 @@ export class PodcastComponent implements OnInit {
 
     route.params.subscribe(params => {
       if (params.rss) {
-        const observable = this.rssParser.getFeedContent(params.rss);
+        const observable = this.rssParser.getFeedContent(
+          params.rss,
+          params.genreId
+        );
 
         observable.subscribe((data: Podcast) => {
           headerService.titleSubject.next(data.title);
+
           this.podcast = data;
         });
       }
@@ -64,7 +68,8 @@ export class PodcastComponent implements OnInit {
       rss,
       followed,
       id,
-      lastListened
+      lastListened,
+      category
     }) => ({
       userId: this.authService.currentUserValue.id,
       title,
@@ -72,7 +77,8 @@ export class PodcastComponent implements OnInit {
       rss,
       followed,
       id,
-      lastListened
+      lastListened,
+      category
     }))(this.podcast);
 
     requestPod.followed = !requestPod.followed;

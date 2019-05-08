@@ -17,7 +17,7 @@ export class RssParserService {
     private authService: AuthenticationService
   ) {}
 
-  getFeedContent(url: string): Observable<any> {
+  getFeedContent(url: string, genreId: string): Observable<any> {
     return forkJoin([
       this.ajaxComm
         .get({
@@ -39,6 +39,7 @@ export class RssParserService {
         )
     ]).pipe(
       switchMap((result: [Podcast, Podcast]) => {
+        // if followed podcast already exists in db
         if (result[1]) {
           return of(result).pipe(
             map(res => {
@@ -46,6 +47,7 @@ export class RssParserService {
               podcast.id = res[1].id;
               podcast.userId = res[1].userId;
               podcast.followed = res[1].followed;
+              podcast.category = res[1].category;
 
               podcast.podcastEpisode.forEach((ep: PodcastEpisode) => {
                 const followedEpisode = res[1].podcastEpisode.find(
@@ -74,7 +76,8 @@ export class RssParserService {
                 imageUrl,
                 rss,
                 followed: false,
-                lastListened
+                lastListened,
+                category: genreId
               }))(res[0]);
 
               requestPod.userId = this.authService.currentUserValue.id;
@@ -106,6 +109,7 @@ export class RssParserService {
       description: rss['itunes:summary'] || rss.description,
       imageUrl: rss['itunes:image']['@href'],
       rss: url,
+      category: rss[''],
 
       podcastEpisode: rss.item.map(
         x =>

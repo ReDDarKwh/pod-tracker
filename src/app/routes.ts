@@ -10,7 +10,7 @@ import { RecommendationComponent } from './components/recommendation/recommendat
 
 export const routerConfig: Routes = [
   {
-    path: 'podcast/:rss',
+    path: 'podcast/:rss/:genreId',
     component: PodcastComponent
   },
   {

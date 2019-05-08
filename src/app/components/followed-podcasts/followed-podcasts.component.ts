@@ -45,6 +45,6 @@ export class FollowedPodcastsComponent implements OnInit {
   ngOnInit() {}
 
   onClickPodcast(podcast: Podcast) {
-    this.router.navigate(['/podcast', podcast.rss]);
+    this.router.navigate(['/podcast', podcast.rss, podcast.category]);
   }
 }

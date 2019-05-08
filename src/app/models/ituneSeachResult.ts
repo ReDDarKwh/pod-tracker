@@ -3,6 +3,7 @@ export class ItuneSearchResultItem {
   artworkUrl100: string;
   feedUrl: string;
   trackName: string;
+  genreIds: [string];
 }
 
 export class ItuneSearchResult {

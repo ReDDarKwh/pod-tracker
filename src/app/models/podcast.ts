@@ -8,6 +8,7 @@ export class FollowedPodcast {
   rss: string;
   followed: boolean;
   lastListened: Date;
+  category: string;
 }
 
 export class Podcast extends FollowedPodcast {

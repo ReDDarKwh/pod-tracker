@@ -25,8 +25,7 @@ export class RequestActionParams extends RequestParams {
 
 @Injectable({ providedIn: 'root' })
 export class AjaxCommService {
-  static DEFAULT_SERVICE_URL =
-    'http://localhost:8080/podtracker-services-java/webresources';
+  static DEFAULT_SERVICE_URL = 'http://localhost:8080/PoadcastApp/webresources';
 
   static NET_SERVICE_URL = 'https://pod-tracker.herokuapp.com/api';
 

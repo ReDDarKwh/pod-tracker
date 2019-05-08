@@ -262,7 +262,8 @@ export class AudioPlayerComponent implements OnInit {
           rss,
           followed,
           id,
-          lastListened
+          lastListened,
+          category
         }) => ({
           userId: this.authService.currentUserValue.id,
           title,
@@ -270,7 +271,8 @@ export class AudioPlayerComponent implements OnInit {
           rss,
           followed,
           id,
-          lastListened
+          lastListened,
+          category
         }))(x.podcast);
 
         requestPod.lastListened = new Date();

@@ -51,7 +51,7 @@ export class BrowseComponent implements OnInit {
   }
 
   onClickPodcast(podcast: ItuneSearchResultItem) {
-    this.router.navigate(['/podcast', podcast.feedUrl]);
+    this.router.navigate(['/podcast', podcast.feedUrl, podcast.genreIds[0]]);
   }
 
   ngOnInit() {}
