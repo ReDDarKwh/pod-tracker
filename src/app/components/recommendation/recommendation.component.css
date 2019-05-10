@@ -1,0 +1,27 @@
+.mat-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.mat-card:hover {
+  box-shadow: none;
+  background: #616161;
+  cursor: pointer;
+}
+
+.podcast-img {
+  border-radius: 4px;
+}
+
+.mat-card-avatar {
+  height: 90px;
+  width: 90px;
+}
+
+.mat-form-field {
+  width: 100%;
+  font-size: 16px;
+}
